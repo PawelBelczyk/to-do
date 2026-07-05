@@ -42,6 +42,15 @@ export function setupAddTodoForm(onAddTodo) {
         const priority = document.querySelector("#todo-priority").value;
 
         onAddTodo(title, description,dueDate, priority);
+
+        // reset form;
+        document.querySelector("#todo-title").value = "";
+        document.querySelector("#todo-description").value ="";
+        document.querySelector("#todo-date").value ="";
+        document.querySelector("#todo-priority").value ="low";
+        
+
+            
     });
 }
 
