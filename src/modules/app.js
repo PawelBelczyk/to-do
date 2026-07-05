@@ -2,18 +2,18 @@
 import {Todo} from "./todo.js";
 import {Project} from "./project.js";
 
+ 
 
-// to poniżej to tylko test
-// const todo1 = new Todo(
-//   "nauczyć się klas",
-//   "tak",
-//   "2222",
-//   "low"
-// );
 
-// const todo = new Todo("test", "desc", "2026-07-05", "low");
+const projects = [];
 
-// const project = new Project("js");
-// project.addTodo(todo);
+function createProject(name) {
+    const project = new Project(name);
+    projects.push(project);
+    return project;
+}
 
-// console.log(project);
+
+const js = createProject("JavaScript");
+
+console.log(projects);
