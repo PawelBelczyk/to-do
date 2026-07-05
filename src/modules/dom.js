@@ -20,17 +20,27 @@ export function renderProjects(projects, onSelectProject) {
 
 const todosContainer = document.querySelector("#todos");
 
-export function renderTodos(project) {
+export function renderTodos(project, onDeleteTodo) {
     todosContainer.innerHTML ="";
 
     if(!project) return;
 
     project.todos.forEach(todo => {
         const div = document.createElement("div");
-        div.textContent = todo.title;
+         div.innerHTML = ` 
+        <strong>${todo.title}</strong>
+        <button class="delete-btn">❌</button>
+        `;
+        const deleteBtn = div.querySelector(".delete-btn");
+
+        deleteBtn.addEventListener("click", () => {
+            onDeleteTodo(todo);
+        });
         todosContainer.appendChild(div)
     })
 }
+
+
 
 export function setupAddTodoForm(onAddTodo) {
     const button = document.querySelector("#add-todo");
@@ -53,4 +63,5 @@ export function setupAddTodoForm(onAddTodo) {
             
     });
 }
+
 

@@ -19,14 +19,14 @@ function selectProject(project) {
     activeProject = project;
     console.log("Wybrano:", activeProject);
 
-    renderTodos(activeProject);
+    renderTodos(activeProject, deleteTodo);
     
 }
 
 function addTodoActiveProject(title, description, dueDate, priority) {
    let todo = new Todo(title, description, dueDate, priority );
    activeProject.addTodo(todo);
-   renderTodos(activeProject);
+   renderTodos(activeProject, deleteTodo);
 }
  
 setupAddTodoForm(addTodoActiveProject);
@@ -37,5 +37,14 @@ activeProject = js;
 addTodoActiveProject("pierwsze zadanie", "opis", "2026-07-10", "high");
 
 
+function deleteTodo(todo) {
+    const index = activeProject.todos.indexOf(todo);
+    activeProject.todos.splice(index, 1);
+
+    renderTodos(activeProject, deleteTodo);
+}
+
+ 
+
 renderProjects(projects, selectProject);
-renderTodos(activeProject);
+renderTodos(activeProject, deleteTodo);
