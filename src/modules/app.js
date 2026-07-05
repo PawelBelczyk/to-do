@@ -21,6 +21,12 @@ function selectProject(project) {
     renderTodos(activeProject);
     
 }
+
+function addTodoActiveProject(title, description, dueDate, priority) {
+   let todo = new Todo(title, description, dueDate, priority );
+   activeProject.addTodo(todo);
+   renderTodos(activeProject);
+}
  
 
 const js = createProject("JavaScript");
