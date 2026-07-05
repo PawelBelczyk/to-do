@@ -26,16 +26,8 @@ export function renderTodos(project) {
     if(!project) return;
 
     project.todos.forEach(todo => {
-
         const div = document.createElement("div");
-            div.innerHTML = `
-            <h3>${todo.title}</h3>
-            <p>${todo.description}</p>
-            <p>📅 ${todo.dueDate}</p>
-            <p>⚡ ${todo.priority}</p>
-            <p>✔ ${todo.completed}</p>
-        `;
-
+        div.textContent = todo.title;
         todosContainer.appendChild(div)
     })
 }
