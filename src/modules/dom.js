@@ -32,3 +32,16 @@ export function renderTodos(project) {
     })
 }
 
+export function setupAddTodoForm(onAddTodo) {
+    const button = document.querySelector("#add-todo");
+
+    button.addEventListener("click", () =>  {
+        const title = document.querySelector("#todo-title").value;
+        const description = document.querySelector("#todo-description").value;
+        const dueDate = document.querySelector("#todo-date").value;
+        const priority = document.querySelector("#todo-priority").value;
+
+        onAddTodo(title, description,dueDate, priority);
+    });
+}
+

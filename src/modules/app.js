@@ -2,6 +2,7 @@
 import {Todo} from "./todo.js";
 import {Project} from "./project.js";
 import {renderProjects, renderTodos} from "./dom.js";
+import { setupAddTodoForm } from "./dom.js";
  
 let activeProject = null;
 
@@ -28,11 +29,13 @@ function addTodoActiveProject(title, description, dueDate, priority) {
    renderTodos(activeProject);
 }
  
+setupAddTodoForm(addTodoActiveProject);
 
 const js = createProject("JavaScript");
+activeProject = js;
 
-js.addTodo(
-    new Todo("pierwsze zadanie", "opis", "2026-07-10", "high")
-);
+addTodoActiveProject("pierwsze zadanie", "opis", "2026-07-10", "high");
+
+
 renderProjects(projects, selectProject);
-
+renderTodos(activeProject);
