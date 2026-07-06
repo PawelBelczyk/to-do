@@ -25,7 +25,12 @@ export function renderTodos(project, onDeleteTodo) {
         const div = document.createElement("div");
 
         div.innerHTML = `
-            <strong>${todo.title}</strong>
+               <div>
+         <strong>${todo.title}</strong><br>
+         <span>${todo.description}</span><br>
+            <small>📅 ${todo.dueDate}</small><br>
+            <small>⚡ ${todo.priority}</small>
+             </div>
             <button class="delete-btn">❌</button>
         `;
 
