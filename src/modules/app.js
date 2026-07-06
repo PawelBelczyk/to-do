@@ -32,12 +32,14 @@ function initApp() {
         activeProject = projects[0];
     }
 
-    renderProjects(projects, selectProject);
+    renderProjects(projects, selectProject, activeProject);
     renderTodos(activeProject, deleteTodo);
 }
 
 function selectProject(project) {
     activeProject = project;
+        renderProjects(projects, selectProject, activeProject);
+
     renderTodos(activeProject, deleteTodo);
 }
 

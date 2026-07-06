@@ -1,12 +1,17 @@
 const projectsContainer = document.querySelector("#projects");
 const todosContainer = document.querySelector("#todos");
 
-export function renderProjects(projects, onSelectProject) {
+export function renderProjects(projects, onSelectProject, activeProject) {
     projectsContainer.innerHTML = "";
 
     projects.forEach(project => {
         const div = document.createElement("div");
         div.textContent = project.name;
+
+        if (activeProject && project.name === activeProject.name) {
+            div.style.fontWeight = "bold";
+            div.style.color = "blue";
+        }
 
         div.addEventListener("click", () => {
             onSelectProject(project);

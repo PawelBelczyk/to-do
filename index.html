@@ -8,31 +8,56 @@
     <title>to-do</title>
     <link rel="stylesheet" href="style.css">
 </head>
+ 
 <body>
 
-<label for="todo-title">Title</label>
-<input type="text" id="todo-title" placeholder="Title">
-<label for="todo-description">Description</label>
-<input type="text" id="todo-description" placeholder="Description">
-<label for="todo-date">Date</label>
-<input type="date" id="todo-date">
-<label for="todo-priority">Priority:</label>
-<select id="todo-priority">
-    <option value="low">Low</option>
-    <option value="medium">Medium</option>
-    <option value="high">High</option>
-</select>
-<button id="add-todo">Dodaj</button>
+    <header>
+        <h1>📝 Todo List</h1>
+    </header>
 
+    <main class="container">
 
+        <aside class="sidebar">
+            <h2>Projects</h2>
+            <div id="projects"></div>
+        </aside>
 
+        <section class="content">
 
+            <h2>New Todo</h2>
 
+            <div class="form">
 
+                <label for="todo-title">Title</label>
+                <input type="text" id="todo-title" placeholder="Title">
 
-    <div id="projects"></div>
-    <div id="todos"></div>
+                <label for="todo-description">Description</label>
+                <input type="text" id="todo-description" placeholder="Description">
+
+                <label for="todo-date">Due date</label>
+                <input type="date" id="todo-date">
+
+                <label for="todo-priority">Priority</label>
+                <select id="todo-priority">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>
+
+                <button id="add-todo">Add Todo</button>
+
+            </div>
+
+            <h2>Todos</h2>
+
+            <div id="todos"></div>
+
+        </section>
+
+    </main>
+
     <script type="module" src="./src/modules/app.js"></script>
-    
+
 </body>
+ 
 </html>
