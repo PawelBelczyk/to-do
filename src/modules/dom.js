@@ -24,13 +24,15 @@ export function renderTodos(project, onDeleteTodo) {
     project.todos.forEach(todo => {
         const div = document.createElement("div");
 
+        // 🔥 klasa zależna od priority
+        div.classList.add("todo");
+        div.classList.add(`priority-${todo.priority}`);
+
         div.innerHTML = `
-               <div>
-         <strong>${todo.title}</strong><br>
-         <span>${todo.description}</span><br>
-            <small>📅 ${todo.dueDate}</small><br>
+            <strong>${todo.title}</strong>
+            <p>${todo.description}</p>
+            <small>📅 ${todo.dueDate}</small>
             <small>⚡ ${todo.priority}</small>
-             </div>
             <button class="delete-btn">❌</button>
         `;
 
@@ -41,6 +43,7 @@ export function renderTodos(project, onDeleteTodo) {
         todosContainer.appendChild(div);
     });
 }
+
 
 export function setupAddTodoForm(onAddTodo) {
     const button = document.querySelector("#add-todo");
