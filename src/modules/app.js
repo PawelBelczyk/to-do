@@ -1,6 +1,12 @@
 import { Todo } from "./todo.js";
 import { Project } from "./project.js";
-import { renderProjects, renderTodos, setupAddTodoForm } from "./dom.js";
+import {
+    renderProjects,
+    renderTodos,
+    setupAddTodoForm,
+    setupAddProjectForm
+} from "./dom.js";
+
 import { loadProjects, saveProjects } from "./storage.js";
 
 let projects = loadProjects().map(p => {
@@ -8,19 +14,23 @@ let projects = loadProjects().map(p => {
 
     if (p.todos) {
         p.todos.forEach(t => {
-            project.addTodo(new Todo(
-                t.title,
-                t.description,
-                t.dueDate,
-                t.priority
-            ));
+            project.addTodo(
+                new Todo(
+                    t.title,
+                    t.description,
+                    t.dueDate,
+                    t.priority
+                )
+            );
         });
     }
 
     return project;
 });
 
-let activeProject;
+let activeProject = null;
+
+// ================= INIT =================
 
 function initApp() {
     if (projects.length === 0) {
@@ -36,12 +46,30 @@ function initApp() {
     renderTodos(activeProject, deleteTodo);
 }
 
+// ================= PROJECTS =================
+
 function selectProject(project) {
     activeProject = project;
-        renderProjects(projects, selectProject, activeProject);
 
+    renderProjects(projects, selectProject, activeProject);
     renderTodos(activeProject, deleteTodo);
 }
+
+function createProject(name) {
+    const project = new Project(name);
+
+    projects.push(project);
+    activeProject = project;
+
+    saveProjects(projects);
+
+    renderProjects(projects, selectProject, activeProject);
+    renderTodos(activeProject, deleteTodo);
+
+    return project;
+}
+
+// ================= TODOS =================
 
 function addTodo(title, description, dueDate, priority) {
     if (!activeProject) return;
@@ -61,5 +89,11 @@ function deleteTodo(todo) {
     renderTodos(activeProject, deleteTodo);
 }
 
+// ================= FORMS =================
+
 setupAddTodoForm(addTodo);
+setupAddProjectForm(createProject);
+
+// ================= START =================
+
 initApp();

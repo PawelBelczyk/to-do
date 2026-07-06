@@ -50,6 +50,20 @@ export function renderTodos(project, onDeleteTodo) {
 }
 
 
+export function setupAddProjectForm(onAddProject) {
+    const button = document.querySelector("#add-project");
+
+    button.addEventListener("click", () => {
+        const name = document.querySelector("#project-name").value.trim();
+
+        if (name === "") return;
+
+        onAddProject(name);
+
+        document.querySelector("#project-name").value = "";
+    });
+}
+
 export function setupAddTodoForm(onAddTodo) {
     const button = document.querySelector("#add-todo");
 
