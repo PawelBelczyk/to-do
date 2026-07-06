@@ -1,13 +1,8 @@
 export function saveProjects(projects) {
-
-    const myJSON = JSON.stringify(projects);
-    localStorage.setItem("projects", myJSON);
+    localStorage.setItem("projects", JSON.stringify(projects));
 }
 
 export function loadProjects() {
-const myJSON = localStorage.getItem("projects");
-// najpierw pobieramy dane z localStorage 
-const projects = JSON.parse(myJSON);
-return projects;
-
+    const data = localStorage.getItem("projects");
+    return data ? JSON.parse(data) : [];
 }
